@@ -3,6 +3,7 @@ import { SignUpController } from "./signup";
 describe('SignUp Controller', () => {
   test('Should return 400 if no name is provided', () => {
     const sut = new SignUpController();
+
     const httpRequest = {
       body: {
         email: 'any_email@email.com',
@@ -11,6 +12,8 @@ describe('SignUp Controller', () => {
       }
     };
     const response = sut.handle(httpRequest);
+
     expect(response.statusCode).toBe(400);
+    expect(response.body).toEqual(new Error('Missing param: name'));
   });
 });
