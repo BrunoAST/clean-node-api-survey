@@ -28,20 +28,22 @@ const makeSut = (): SutTypes => {
 }
 
 describe('SignUp Controller', () => {
-  test('Should return 400 if no name is provided', () => {
-    const { sut } = makeSut();
+  describe('#name', () => {
+    test('Should return 400 if no name is provided', () => {
+      const { sut } = makeSut();
 
-    const httpRequest = {
-      body: {
-        email: 'any_email@email.com',
-        password: 'any_password',
-        passwordConfirmation: 'any_password'
-      }
-    };
-    const response = sut.handle(httpRequest);
+      const httpRequest = {
+        body: {
+          email: 'any_email@email.com',
+          password: 'any_password',
+          passwordConfirmation: 'any_password'
+        }
+      };
+      const response = sut.handle(httpRequest);
 
-    expect(response.statusCode).toBe(400);
-    expect(response.body).toEqual(new MissingParamError('name'));
+      expect(response.statusCode).toBe(400);
+      expect(response.body).toEqual(new MissingParamError('name'));
+    });
   });
 
   describe('#email', () => {
