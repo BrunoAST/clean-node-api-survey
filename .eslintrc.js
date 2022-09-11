@@ -32,6 +32,12 @@ module.exports = {
 			'error',
 			'always'
 		],
+		'max-len': [
+			'error',
+			{
+				'code': 120,
+			},
+		],
 		'@typescript-eslint/no-unused-vars': ['off'],
 		'@typescript-eslint/no-explicit-any': ['off']
 	}
